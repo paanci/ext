@@ -1,22 +1,21 @@
 name: Create Empty Branch
 
 on:
-  workflow_dispatch: # Memungkinkan menjalankan workflow secara manual dari GitHub Actions UI.
+  workflow_dispatch: # Menjalankan workflow secara manual
 
 jobs:
-  create-branch:
+  create-empty-branch:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Create a new empty branch
+      - name: Create an empty branch
         run: |
           git fetch origin
-          git checkout --orphan new-empty-branch # Ganti dengan nama branch yang Anda inginkan
-          git rm -rf .                          # Hapus semua file dari branch (opsional)
-          echo "This is an empty branch" > README.md # Tambahkan file opsional (contoh README.md)
-          git add README.md
-          git commit -m "Initial empty commit"
-          git push origin new-empty-branch
+          git checkout --orphan new-empty-branch # Ganti dengan nama branch baru
+          git reset --hard                       # Hapus semua file dan commit yang mungkin ada
+          git clean -fdx                         # Pastikan direktori kerja benar-benar bersih
+          git commit --allow-empty -m "Initial empty commit" # Commit kosong
+          git push origin new-empty-branch       # Push branch ke repository
