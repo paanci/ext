@@ -1,0 +1,7 @@
+ext {
+    extName = 'Asura Scans X'
+    extClass = '.AsuraScansX'
+    extVersionCode = 43
+}
+
+apply from: "$rootDir/common.gradle"
