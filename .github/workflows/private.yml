@@ -1,0 +1,26 @@
+name: Generate SSH Key for Codeberg
+
+on:
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  generate_ssh_key:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate SSH Key Pair
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa -N ""
+          echo "SSH key pair generated"
+
+      - name: Show SSH Private Key
+        run: |
+          echo "=== PRIVATE KEY ==="
+          cat ~/.ssh/id_rsa
+          echo "==================="
+
+      - name: Show SSH Public Key
+        run: |
+          echo "=== PUBLIC KEY ==="
+          cat ~/.ssh/id_rsa.pub
+          echo "==================="
