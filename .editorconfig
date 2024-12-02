@@ -17,3 +17,6 @@ ij_kotlin_name_count_to_use_star_import_for_members = 2147483647
 
 [*.properties]
 charset = utf-8
+
+[*.{kt,kts}]
+disabled_rules = import-ordering
