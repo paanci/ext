@@ -34,7 +34,7 @@ import kotlin.random.Random
 
 class ShinigamiX : ConfigurableSource, HttpSource() {
 
-    // aplikasi premium shinigami APK free gravtis
+    // aplikasi premium shinigami APK free gravtiis
 
     override val name = "Shinigami X"
 
