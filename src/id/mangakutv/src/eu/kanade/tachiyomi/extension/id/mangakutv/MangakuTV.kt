@@ -1,8 +1,8 @@
 package eu.kanade.tachiyomi.extension.id.mangakutv
 
 import android.util.Base64
-import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.multisrc.madara.Madara
+import eu.kanade.tachiyomi.source.model.Page
 import org.jsoup.nodes.Document
 import java.text.SimpleDateFormat
 import java.util.Locale
