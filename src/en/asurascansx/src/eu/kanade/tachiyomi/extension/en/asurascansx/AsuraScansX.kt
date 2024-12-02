@@ -258,7 +258,7 @@ class AsuraScansX : ParsedHttpSource(), ConfigurableSource {
     override fun pageListRequest(chapter: SChapter): Request {
         if (!preferences.dynamicUrl()) return super.pageListRequest(chapter)
         val match = OLD_FORMAT_CHAPTER_REGEX.containsMatchIn(chapter.url)
-        if (match) throw Exception("Please refresh the chapter list before reading.")
+        if (match) throw Exception("Pledase refresh the chapter list before reading.")
         val slug = chapter.url.substringAfter("/series/").substringBefore("/")
         val savedSlug = preferences.slugMap[slug] ?: "$slug-"
         return GET(baseUrl + chapter.url.replace(slug, savedSlug), headers)
