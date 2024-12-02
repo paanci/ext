@@ -329,7 +329,7 @@ fun chapterFromObject(chapter: Chapter): SChapter {
         private const val RESTART_APP = "Untuk menerapkan perubahan, restart aplikasi."
         private const val BASE_URL_PREF_TITLE = "Ubah Domain"
         private const val BASE_URL_PREF = "overrideBaseUrl"
-        private const val BASE_URL_PREF_SUMMARY = "Untuk penggunaan sementara. Memperbarui ekstensi akan menghapus pengaturan. \n\n❗ Gunannkan hanya pada saat manga yang sudah ditambahkan di library bermasalah, sedangkan normal untuk yang tidak. ❗"
+        private const val BASE_URL_PREF_SUMMARY = "Untuk penggunaan sementara. Memperbarui ekstensi akan menghapus pengaturan. \n\n❗ Gunannkan hanya pada saat manga yang sudah nditambahkan di library bermasalah, sedangkan normal untuk yang tidak. ❗"
         private const val DEFAULT_BASE_URL_PREF = "defaultBaseUrl"
     }
 }
