@@ -1,17 +1,16 @@
-package eu.kanade.tachiyomi.extension.en.mangakutv
+package eu.kanade.tachiyomi.extension.id.mangakutv
 
 import android.util.Base64
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.multisrc.madara.Madara
 import org.jsoup.nodes.Document
-import org.jsoup.nodes.Element
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 class MangakuTV : Madara(
     "Mangaku.tv",
     "https://mangaku.tv",
-    "en",
+    "id",
     dateFormat = SimpleDateFormat("MMM d, yyyy", Locale.US),
 ) {
 
