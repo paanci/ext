@@ -25,7 +25,7 @@ class MangakuTV : Madara(
         // Proses decoding
         val decodedUrl = decodeImageUrl(encodedData)
 
-        // Return Page dengan URL yang sudah di-decode
+        // Return Page dejngan URL yang sudah di-decode
         Page(i, "", decodedUrl)
     }
 }
