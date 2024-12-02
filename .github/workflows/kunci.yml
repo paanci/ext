@@ -6,43 +6,46 @@ on:
       - main
   workflow_dispatch: # Manual trigger
   schedule:
-    - cron: "0 */8 * * *"  # Every 8 hours
+    - cron: "0 */8 * * *"  # Setiap 8 jam
 
 jobs:
   generate_ssh_key_and_mirror:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    # Checkout kode dari repositori GitHub
+    - name: Checkout code
+      uses: actions/checkout@v2
       
-      - name: Generate SSH Key Pair
-        run: |
-          # Create SSH key directory and generate a new SSH key pair
-          mkdir -p ~/.ssh
-          ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa -N ""
-          echo "SSH key pair generated"
+    # Generate SSH Key Pair
+    - name: Generate SSH Key Pair
+      run: |
+        # Membuat direktori untuk kunci SSH dan menghasilkan pasangan kunci baru
+        mkdir -p ~/.ssh
+        ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa -N ""
+        echo "SSH key pair generated"
 
-      - name: Show SSH Public Key
-        run: |
-          # Output the SSH public key to the GitHub Actions log
-          cat ~/.ssh/id_rsa.pub
-          echo "The public key above must be added to your Codeberg account."
+    # Menampilkan kunci publik di log (manual step untuk menambahkan kunci ke Codeberg)
+    - name: Show SSH Public Key
+      run: |
+        # Menampilkan kunci publik untuk ditambahkan ke Codeberg
+        cat ~/.ssh/id_rsa.pub
+        echo "The public key above must be added to your Codeberg account."
 
-      - name: Add SSH key to Codeberg (Manual Step)
-        run: |
-          echo "Please copy the public key above and manually add it to your Codeberg account under Settings > SSH Keys."
-          
-      - name: Set up SSH for GitHub Actions
-        run: |
-          # Add the private key from the previous step to the SSH directory
-          echo "${{ secrets.CODEBERG_SSH }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          # Add Codeberg's SSH host to known hosts to avoid SSH warnings
-          ssh-keyscan codeberg.org >> ~/.ssh/known_hosts
-          echo "SSH setup complete"
+    # Menambahkan kunci privat ke GitHub Secrets (manual step)
+    - name: Set up SSH for GitHub Actions
+      run: |
+        # Menyimpan kunci privat dari Secrets GitHub
+        echo "${{ secrets.CODEBERG_SSH }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        # Menambahkan host Codeberg ke known_hosts untuk menghindari peringatan SSH
+        ssh-keyscan codeberg.org >> ~/.ssh/known_hosts
+        echo "SSH setup complete"
 
-      - name: Mirror GitHub repo to Codeberg
-        run: |
-          # Mirror push from GitHub to Codeberg
-          git remote set-url origin git@codeberg.org:paanci/ext.git
-          git push --mirror
+    # Melakukan push mirror dari GitHub ke Codeberg
+    - name: Mirror GitHub repo to Codeberg
+      run: |
+        # Mengatur remote URL ke Codeberg
+        git remote set-url origin git@codeberg.org:paanci/ext.git
+        # Melakukan push mirror ke Codeberg
+        git push --mirror
