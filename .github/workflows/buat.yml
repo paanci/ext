@@ -10,7 +10,7 @@ on:
       extract_to:
         description: 'Tujuan direktori ekstrak'
         required: true
-        default: 'src/id/'
+        default: ''
       commit_message:
         description: 'Pesan komit khusus (opsional)'
         required: false
